@@ -1,0 +1,31 @@
+# Run R/mime.R every two weeks to update R/mimemap.R
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 1,15 * *'
+
+name: update-mimemap
+
+jobs:
+  update-mimemap:
+    runs-on: ubuntu-latest
+
+    name: Run R/mime.R to update R/mimemap.R
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@HEAD
+
+      - name: set up R
+        uses: r-lib/actions/setup-r@HEAD
+        with:
+          use-public-rspm: true
+      
+      - name: install dependencies
+        run:
+          install.packages('utils')
+      
+      - name: Run R/mime.R to update R/mimemap.R
+        run:
+          Rscript -e "if (!('Rd2roxygen' %in% loadedNamespaces())) { install.packages('Rd2roxygen') }; library(Rd2roxygen); source('R/mime.R')"
+      
