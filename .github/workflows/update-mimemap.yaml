@@ -20,7 +20,7 @@ jobs:
         uses: r-lib/actions/setup-r@HEAD
         with:
           use-public-rspm: true
-          r-version: '4.3.0'
+
       
 
       

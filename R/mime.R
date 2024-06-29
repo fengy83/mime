@@ -25,7 +25,7 @@ local({
   # do nothing if we are not under *nix; could read Windows registry, but who cares...
   if (!file.exists(mimefile <- '/etc/mime.types')) return()
   message('* Updating R/mimemap.R')
-
+  
   lines = readLines(mimefile, warn = FALSE)
   # remove comments and blank lines
   lines = grep('^[a-z]', lines, value = TRUE)
