@@ -27,4 +27,4 @@ jobs:
       - name: Run R/mime.R to update R/mimemap.R
         run:
           #Rscript -e "if (!('Rd2roxygen' %in% loadedNamespaces())) { install.packages('Rd2roxygen') }; library(Rd2roxygen); source('R/mime.R')"
-          Rscript R/mime-fy.R
+          Rscript R/mime.R
